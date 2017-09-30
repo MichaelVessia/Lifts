@@ -5,16 +5,20 @@
     <meta charset="UTF-8">
     <title>Strength Program Generator</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link href="//cdn.muicss.com/mui-0.9.27/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.9.27/js/mui.min.js"></script>
   </head>
 
   <body>
     <div id="liftsTable">
-      <table>
+      <table class="mui-table mui-table--bordered">
         <tr>
           <th>Lift</th>
           <th>Reps</th>
           <th>Weight</th>
-          <th>1RM</th>
+          <th>One Rep Max</th>
+          <th>Training Max</th>
           <tr v-for="exercise in lifts">
             <td>{{ exercise.name | capitalize}}</td>
 
@@ -23,6 +27,7 @@
             <td><input v-model="exercise.weight"></td>
 
             <td>{{ calcOneRepMax(exercise, exercise.reps, exercise.weight) }}lbs</td>
+            <td>{{ exercise.trainingMax }}</td>
           </tr>
       </table>
     </div>
