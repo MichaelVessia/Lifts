@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <title>Strength Program Generator</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="//cdn.muicss.com/mui-0.9.27/js/mui.min.js"></script>
     <link href="//cdn.muicss.com/mui-0.9.27/css/mui.min.css" rel="stylesheet" type="text/css" />
     <link href="main.css" rel="stylesheet" type="text/css" />
-    <script src="//cdn.muicss.com/mui-0.9.27/js/mui.min.js"></script>
   </head>
 
   <body>
-    <div id="liftsTable">
+    <div id="liftsTable" class="mui-container">
       <table class="mui-table mui-table--bordered">
         <tr>
           <th>Lift</th>
@@ -19,17 +19,35 @@
           <th>Weight</th>
           <th>One Rep Max</th>
           <th>Training Max</th>
-          <tr v-for="exercise in lifts">
-            <td>{{ exercise.name | capitalize}}</td>
+        </tr>
+        <tr v-for="exercise in lifts">
+          <td>{{ exercise.name | capitalize }}</td>
 
-            <td><input v-model="exercise.reps"></td>
+          <td><input v-model="exercise.reps"></td>
 
-            <td><input v-model="exercise.weight"></td>
+          <td><input v-model="exercise.weight"></td>
 
-            <td>{{ calcOneRepMax(exercise, exercise.reps, exercise.weight) }}lbs</td>
-            <td>{{ exercise.trainingMax }}</td>
-          </tr>
+          <td>{{ calcOneRepMax(exercise, exercise.reps, exercise.weight) }}lbs</td>
+          <td>{{ exercise.trainingMax }}</td>
+        </tr>
       </table>
+      <div class="mui-divider"></div>
+      <h1> 5/3/1 Program </h1>
+      <div class="mui-divider"></div>
+      <ul class="mui-list--unstyled">
+        <li v-for="exercise in lifts">
+          <table class="mui-table mui-table--bordered">
+            <h2> {{ exercise.name | capitalize }} </h2>
+            <tr>
+              <th>Week 1</th>
+              <th>Week 2</th>
+              <th>Week 3</th>
+              <th>Week 4</th>
+            </tr>
+          </table>
+          <div class="mui-divider"></div>
+        </li>
+      </ul>
     </div>
     <script src="/js/app.js"></script>
   </body>

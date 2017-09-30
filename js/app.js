@@ -2,10 +2,10 @@ var liftSection = new Vue({
   el: '#liftsTable',
   data: {
     lifts: [
-      { name: 'squat', reps: 0, weight: 0, oneRepMax: 0, trainingMax: 0}, 
-      { name: 'bench', reps: 0, weight: 0, oneRepMax: 0, trainingMax: 0},
+      { name: 'press', reps: 0, weight: 0, oneRepMax: 0, trainingMax: 0},
       { name: 'deadlift', reps: 0, weight: 0, oneRepMax: 0, trainingMax: 0},
-      { name: 'press', reps: 0, weight: 0, oneRepMax: 0, trainingMax: 0}
+      { name: 'bench', reps: 0, weight: 0, oneRepMax: 0, trainingMax: 0},
+      { name: 'squat', reps: 0, weight: 0, oneRepMax: 0, trainingMax: 0}
     ]
   },
   methods: {
