@@ -17,8 +17,7 @@
           <th>Lift</th>
           <th>Reps</th>
           <th>Weight</th>
-          <th>One Rep Max</th>
-          <th>Training Max</th>
+          <th>Estimated One Rep Max</th>
         </tr>
         <tr v-for="exercise in lifts">
           <td>{{ exercise.name | capitalize }}</td>
@@ -27,12 +26,14 @@
 
           <td><input v-model="exercise.weight"></td>
 
-          <td>{{ calcOneRepMax(exercise, exercise.reps, exercise.weight) }}lbs</td>
-          <td>{{ exercise.trainingMax }}</td>
+          <td>{{ calcOneRepMax(exercise, exercise.reps, exercise.weight) | liftingRound }}lbs</td>
         </tr>
       </table>
       <div class="mui-divider"></div>
-      <h1> 5/3/1 Program </h1>
+      <div>
+        <h1> 5/3/1 Program </h1>
+        Use Training Max (90% of estimated 1RM): <input type="checkbox" id="use-tm" v-model="useTrainingMax">
+      </div>
       <div class="mui-divider"></div>
       <ul class="mui-list--unstyled">
         <li v-for="exercise in lifts">
@@ -44,12 +45,15 @@
               <th>Week 3</th>
               <th>Week 4</th>
             </tr>
+            <tr v-for="index in 3">
+              <td v-for="week in scheme"> {{
+                week.weight[index-1] * (useTrainingMax ? exercise.trainingMax :
+                exercise.oneRepMax) | liftingRound}} x {{ week.reps[index-1] }} </td>
+            </tr>
           </table>
-          <div class="mui-divider"></div>
         </li>
       </ul>
     </div>
     <script src="/js/app.js"></script>
   </body>
-
 </html>
