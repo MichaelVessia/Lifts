@@ -1,18 +1,20 @@
 var liftSection = new Vue({
-  el: '#lift',
+  el: '#liftsTable',
   data: {
     lifts: [
-      { name: 'squat', reps: 0, weight: 0}, 
-      { name: 'bench', reps: 0, weight: 0},
-      { name: 'deadlift', reps: 0, weight: 0},
-      { name: 'press', reps: 0, weight: 0}
+      { name: 'squat', reps: 0, weight: 0, oneRepMax: 0}, 
+      { name: 'bench', reps: 0, weight: 0, oneRepMax: 0},
+      { name: 'deadlift', reps: 0, weight: 0, oneRepMax: 0},
+      { name: 'press', reps: 0, weight: 0, oneRepMax: 0}
     ]
   },
   methods: {
-    calcOneRepMax: function (reps, weight) {
+    calcOneRepMax: function (lift, reps, weight) {
       reps = parseInt(reps);
       weight = parseInt(weight);
-      return  Math.round(weight * reps * 0.0333 + weight);
+      lift.oneRepMax = Math.round(weight * reps * 0.0333 + weight);
+      
+      return lift.oneRepMax;
     }
   },
   filters: {

@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <div id="lift">
+    <div id="liftsTable">
       <table>
         <tr>
           <th>Lift</th>
@@ -22,7 +22,7 @@
 
             <td><input v-model="exercise.weight"></td>
 
-            <td>{{ calcOneRepMax(exercise.reps, exercise.weight) }}lbs</td>
+            <td>{{ calcOneRepMax(exercise, exercise.reps, exercise.weight) }}lbs</td>
           </tr>
       </table>
     </div>
